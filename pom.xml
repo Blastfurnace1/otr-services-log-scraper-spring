@@ -33,6 +33,16 @@
 		</dependency>
 		<dependency>
     		<groupId>com.blastfurnace</groupId>
+    		<artifactId>otr-services-series-data</artifactId>
+    		<version>0.1.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.blastfurnace</groupId>
+    		<artifactId>otr-services-episode-data</artifactId>
+    		<version>0.1.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.blastfurnace</groupId>
     		<artifactId>otr-episode-data</artifactId>
     		<version>0.1.0</version>
 		</dependency>
