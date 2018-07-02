@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.blastfurnace</groupId>
-    <artifactId>log-scraper</artifactId>
+    <artifactId>otr-services-log-scraper</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -13,6 +13,17 @@
         <version>2.0.2.RELEASE</version>
     </parent>
 
+	<repositories>
+    	<repository>
+    		<id>blastfurnace</id>
+    		<url>http://localhost:8081/artifactory/libs-release-local</url>
+    		<snapshots>
+        		<enabled>true</enabled>
+        		<updatePolicy>never</updatePolicy>
+    		</snapshots>
+		</repository>
+    </repositories>
+    
     <dependencies>
         <dependency>
 			<groupId>org.projectlombok</groupId>
@@ -22,24 +33,18 @@
 		</dependency>
 		<dependency>
     		<groupId>com.blastfurnace</groupId>
-    		<artifactId>otr-data-episodes</artifactId>
-    		<version>1.0</version>
-    		<scope>system</scope>
-    		<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/otr-episode-data.jar</systemPath>
+    		<artifactId>otr-episode-data</artifactId>
+    		<version>0.1.0</version>
 		</dependency>
 		<dependency>
     		<groupId>com.blastfurnace</groupId>
-    		<artifactId>otr-data-series</artifactId>
-    		<version>1.0</version>
-    		<scope>system</scope>
-    		<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/otr-series-data.jar</systemPath>
+    		<artifactId>otr-series-data</artifactId>
+    		<version>0.1.0</version>
 		</dependency>
 		<dependency>
     		<groupId>com.blastfurnace</groupId>
-    		<artifactId>otr-utilities</artifactId>
-    		<version>1.0</version>
-    		<scope>system</scope>
-    		<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/otr-utils.jar</systemPath>
+    		<artifactId>otr-utils</artifactId>
+    		<version>0.1.0</version>
 		</dependency>
 		<dependency>
   			<!-- jsoup HTML parser library @ https://jsoup.org/ -->
@@ -55,9 +60,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <const.megabyte>1048576</const.megabyte>
-        <utilities.project.dir>C:/workspace/otr-utils</utilities.project.dir>
-        <episode.project.dir>C:/workspace/otr-episode-data-spring</episode.project.dir>
-		<series.project.dir>C:/workspace/otr-series-data-spring</series.project.dir>
     </properties>
 	
     <profiles>
@@ -110,69 +112,7 @@
         			</resource>
     			</resources>
         		<plugins>
-        				<plugin>
-            <artifactId>maven-resources-plugin</artifactId>
-            <version>2.7</version>
-            <executions>
-                <execution>
-                    <id>copy-resource-one</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${series.project.dir}/target</directory>
-                                <includes>
-                                    <include>otr-series-data.jar</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>copy-resource-two</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${episode.project.dir}/target</directory>
-                                <includes>
-                                    <include>otr-episode-data.jar</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>copy-resource-three</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${utilities.project.dir}/target</directory>
-                                <includes>
-                                    <include>otr-utils.jar</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-           </executions>
-        </plugin>
+        				
             		<plugin>
                 		<groupId>org.springframework.boot</groupId>
                 		<artifactId>spring-boot-maven-plugin</artifactId>
@@ -250,69 +190,7 @@
         			</resource>
     			</resources>
         		<plugins>
-        				<plugin>
-            <artifactId>maven-resources-plugin</artifactId>
-            <version>2.7</version>
-            <executions>
-                <execution>
-                    <id>copy-resource-one</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${series.project.dir}/target</directory>
-                                <includes>
-                                    <include>otr-series-data.jar</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>copy-resource-two</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${episode.project.dir}/target</directory>
-                                <includes>
-                                    <include>otr-episode-data.jar</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-                <execution>
-                    <id>copy-resource-three</id>
-                    <phase>validate</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-
-                    <configuration>
-                        <outputDirectory>${project.basedir}/src/main/webapp/WEB-INF/lib</outputDirectory>
-                        <resources>
-                            <resource>
-                                <directory>${utilities.project.dir}/target</directory>
-                                <includes>
-                                    <include>otr-utils.jar</include>
-                                </includes>
-                            </resource>
-                        </resources>
-                    </configuration>
-                </execution>
-           </executions>
-        </plugin>
+        				
         			<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-war-plugin</artifactId>
@@ -336,7 +214,7 @@
 							<goal>repackage</goal>
 						</goals>
 					</execution>
-</executions>
+					</executions>
             		</plugin>
         		</plugins>
     		</build>

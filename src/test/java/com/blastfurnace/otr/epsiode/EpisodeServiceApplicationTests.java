@@ -68,22 +68,7 @@ public class EpisodeServiceApplicationTests {
 	
 	@Test
 	public void WhenSendingGetRequestToControllerReponseObject() throws Exception {
-		
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.port + "/rest/get/1", Map.class);
-
-		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		
-		HttpHeaders httpHeaders = this.testRestTemplate
-				  .headForHeaders("http://localhost:" + this.port + "/rest/get/1");
-		
-		assertTrue(httpHeaders.getContentType()
-				  .includes(MediaType.APPLICATION_JSON));
-		
-		EpisodeDataWrapper series = this.testRestTemplate.getForObject(
-				"http://localhost:" + this.port + "/rest/get/1", EpisodeDataWrapper.class);
-
+	
 	}
 	
 }
